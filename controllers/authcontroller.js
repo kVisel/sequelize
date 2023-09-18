@@ -1,5 +1,7 @@
 const db = require('../models/index');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const {secret} = require('../middlewares/secret')
 const User = db.User;
 
 
@@ -45,10 +47,16 @@ exports.login = async (req, res) => {
             return res.status(404).json({message : "address mail ou mot de passe incorrect"});
         }
 
+        const token = jwt.sign({id: user.id}, secret, {
+            expiresIn: '1h'
+        })
+
         return res.status(200).json({
             mesage: "Connexion avec succes",
+            token: token,
             data: user
         })
+
     } catch (error) {
         return res.status(500).json({message : error});
     }

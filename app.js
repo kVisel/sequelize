@@ -11,5 +11,6 @@ db.sequelize.sync({alert: true})
 .catch((error) => console.log("something went wrong " + error));
 
 require('./routes/authroute')(app)
+require('./routes/postroutes')(app)
 
 module.exports = app;
