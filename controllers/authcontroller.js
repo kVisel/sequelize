@@ -42,14 +42,16 @@ exports.login = async (req, res) => {
         })
 
         const match = bcrypt.compareSync(password, user.password);
-        
-        if(!user || !match ){
+     
+        if(!user || !match){
             return res.status(404).json({message : "address mail ou mot de passe incorrect"});
         }
 
         const token = jwt.sign({id: user.id}, secret, {
             expiresIn: '1h'
         })
+        
+        console.log(false)
 
         return res.status(200).json({
             mesage: "Connexion avec succes",

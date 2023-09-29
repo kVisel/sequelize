@@ -1,1 +1,1 @@
-exports.secret = ""
+exports.secret = "SECRET"

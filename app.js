@@ -12,5 +12,6 @@ db.sequelize.sync({alert: true})
 
 require('./routes/authroute')(app)
 require('./routes/postroutes')(app)
+require('./routes/profilroute')(app)
 
 module.exports = app;
